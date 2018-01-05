@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+        
+    <struts>
+    	<!-- 开发者模式 -->
+    	<constant name="struts.devMode" value="true"></constant>
+    	<package name="customer" namespace="/" extends="struts-default">
+    		<action name="customer_*" class="cn.ixan.crm.customer.action.CustomerAction" method="{1}">
+    			<!-- 查询客户列表 -->
+    			<result name="list">/jsp/customer/list.jsp</result>
+    			<result name="customer_info">/jsp/customer/edit.jsp</result>
+    			<result name="addUI">/jsp/customer/add.jsp</result>
+    			<!-- 添加用户成功 -->
+    			<result name="success" type="redirectAction">/customer_findAllResultsForPage</result>
+    			<!-- 更新筛选界面 -->
+    			<result name="selectUI">/jsp/customer/list.jsp</result>
+    			<!-- 条件查询客户列表 -->
+    			<result name="select">/jsp/customer/list.jsp</result>
+    			<result name="input">/jsp/error.jsp</result>
+    		</action>
+    	</package>
+    	
+    	<!-- 设置文件上传的大小20M,默认为2M -->
+    	<!-- <constant name="struts.multipart.maxSize" value="20971520"></constant> -->
+    	<package name="linkman" namespace="/" extends="struts-default">
+    		<action name="linkman_*" class="cn.ixan.crm.linkman.action.LinkmanAction" method="{1}">
+    			<result name="addUI">/jsp/linkman/add.jsp</result>
+    			<!-- <result name="success">/jsp/success.jsp</result> -->
+    			<result name="success" type="redirectAction">linkman_queryAllLinkmanForPage</result>
+    			<!-- 查询联系人列表 -->
+    			<result name="list">/jsp/linkman/list.jsp</result>
+    			<!-- 联系人详细信息 -->
+    			<result name="linkman_info">/jsp/linkman/edit.jsp</result>
+    		</action>
+    	</package>
+    </struts>
